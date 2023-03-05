@@ -15,17 +15,19 @@ function Data(){
     const navigate=useNavigate()
 
 
-    const handledelete=async(v)=>{
+    const handledelete=async(v,show=false)=>{
           try{
             console.log("delete id",v)
            await deleteDoc(doc(db,"class",v))
-        //    await Swal.fire(
-        //     {
-        //         icon: 'success',
-        //         title: 'Success',
-        //         text: 'Successsfully deleted the Task',
-        //     }
-        //    );
+            if(show){
+                await Swal.fire(
+                    {
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Successsfully deleted the Task',
+                    }
+                   );
+            }
            navigate('/')
           }catch(error){
             //   await Swal.fire({
@@ -50,7 +52,7 @@ function Data(){
                i.id=doct.id
                console.log(i)
                await setDoc(doct,i)
-                handledelete(id);
+                handledelete(id);   
                 await Swal.fire(
                 {
                     icon:"success",
@@ -87,10 +89,10 @@ function Data(){
                   <Tooltip title='back'>
                   <div className="backicon" onClick={()=>navigate('/')}> <ArrowBackSharpIcon style={{fontSize:'40px',cursor:'pointer'}}/></div>
                   </Tooltip>
-                  <div className="mine"><Button className="deletemui" onClick={()=>handledelete(data.id)} style={{backgroundColor:'red',color:'white'}}> delete The Task</Button></div>
+                  <div className="mine"><Button className="deletemui" onClick={()=>handledelete(data.id,true)} style={{backgroundColor:'red',color:'white'}}> delete The Task</Button></div>
                   <Tooltip title='Delete'>
                   <div className="deleteicon"><DeleteSharpIcon style={{fontSize:'40px',cursor:'pointer'}}
-                        onClick={()=>handledelete(data.id)}
+                        onClick={()=>handledelete(data.id,true)}
                   /></div>
                   </Tooltip>
                   <div className="mine"><Button style={{backgroundColor:'red',color:'white'}} onClick={()=>completeHandle(data,data.id)} >completed</Button></div>
