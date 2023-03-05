@@ -95,7 +95,7 @@ function Data(){
                   </Tooltip>
                   <div className="mine"><Button style={{backgroundColor:'red',color:'white'}} onClick={()=>completeHandle(data,data.id)} >completed</Button></div>
                  <Tooltip title='completed'>
-                 <div className="checkicon"><CheckSharpIcon style={{fontSize:'40px',cursor:'pointer'}}/></div> 
+                 <div className="checkicon"><CheckSharpIcon style={{fontSize:'40px',cursor:'pointer'}} onClick={()=>completeHandle(data,data.id)}/></div> 
                  </Tooltip>
                   
                   
