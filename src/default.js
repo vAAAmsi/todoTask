@@ -7,13 +7,15 @@ import db from'./firebase'
 import { collection,deleteDoc,getDocs,doc } from "firebase/firestore";
 import { useState,useEffect } from "react";
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
+import { InputAdornment } from "@mui/material";
 function Page(){
     const router=useNavigate();
-    var[data,setdata]=useState([])
-    var[search,setSearch]=useState("")
+    const[data,setdata]=useState([])
+    const [initsearch,setInitsearch] = useState('')
+    const[search,setSearch]=useState("")
    
     const option=(e)=>{
-      setSearch(e.target.value)
+      setInitsearch(e.target.value)
       // console.log("searching thing",search)
     }
     useEffect(()=>{ 
@@ -55,7 +57,15 @@ function Page(){
            <div className="SearchSection">
             <div className="Sub">
                
-                <TextField className="Serach" onChange={option}  label="Search" />
+                <TextField className="Serach" onChange={option} value={initsearch}   label="Search" 
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                       <Button style={{color:'white',backgroundColor:'red'}} onClick={() => setSearch(initsearch)} >search</Button>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
                 <div >
                   <Button style={{backgroundColor:'red',color:'white'}}  onClick={handle}>ADD A TASK</Button>
                 </div>

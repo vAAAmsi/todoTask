@@ -1,9 +1,9 @@
 import { useState,useEffect } from "react";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useNavigate } from "react-router-dom";
-import { TextField,Button, Tooltip } from "@mui/material";
+import { TextField,Button, Tooltip ,InputAdornment} from "@mui/material";
 import VerifiedIcon from '@mui/icons-material/Verified';
-import { async } from "@firebase/util";
+
 import { collection, deleteDoc,doc, getDocs } from "firebase/firestore";
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
@@ -12,7 +12,10 @@ import Swal from "sweetalert2";
 function Completed(){
    const navigate=useNavigate()
    const [data,setdata]=useState([])
+   const [initsearch,setInitsearch] = useState('')
    const [search,setSearch]=useState('')
+   
+    
 //    console.log("sertch",Serach)
    useEffect(()=>{ 
     getdata()
@@ -52,8 +55,15 @@ const DeleteCo=async(i)=>{
                 <div></div>
            </div>
            <div className="completedsearch">
-            <TextField className="completedsearchbar" label="search" value={search}
-            onChange={(e)=>setSearch(e.target.value)}
+            <TextField className="completedsearchbar" label="search" value={initsearch}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                 <Button style={{color:'white',backgroundColor:'red'}} onClick={() => setSearch(initsearch)} >search</Button>
+                </InputAdornment>
+              ),
+            }}
+            onChange={(e)=>setInitsearch(e.target.value)}
             />
            </div>
             <div className="completedfrontendmain">

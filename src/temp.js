@@ -13,7 +13,7 @@ function Data(){
     let location=useLocation();
     var[data,setdata]=useState(location.state)
     const navigate=useNavigate()
-
+     console.log('data is',data)
 
     const handledelete=async(v,show=false)=>{
           try{
@@ -93,6 +93,9 @@ function Data(){
                   <Tooltip title='Delete'>
                   <div className="deleteicon"><DeleteSharpIcon style={{fontSize:'40px',cursor:'pointer'}}
                         onClick={()=>handledelete(data.id,true)}
+
+
+                        
                   /></div>
                   </Tooltip>
                   <div className="mine"><Button style={{backgroundColor:'red',color:'white'}} onClick={()=>completeHandle(data,data.id)} >completed</Button></div>

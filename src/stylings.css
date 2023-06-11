@@ -214,7 +214,7 @@
     background-color: red;
     align-items: center;
     margin-bottom: 20px;
-    z-index:            1;
+    z-index:1;
     position: sticky;
     top: 0px;
 
