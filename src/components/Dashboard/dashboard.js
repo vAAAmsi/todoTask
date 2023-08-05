@@ -1,10 +1,11 @@
 import React from "react";
-import './stylings.css'
+// import './stylings.css'
+import './dashboard.css'
 import TextField from '@mui/material/TextField';
 import { Button, Tooltip } from "@mui/material";
 import { useNavigate,route } from "react-router-dom";
-import db from'./firebase'
-import { collection,deleteDoc,getDocs,doc } from "firebase/firestore";
+import db from'../../Firebse/firebase'
+import { collection,deleteDoc,getDocs,doc ,query,orderBy} from "firebase/firestore";
 import { useState,useEffect } from "react";
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import { InputAdornment } from "@mui/material";
@@ -13,23 +14,24 @@ function Page(){
     const[data,setdata]=useState([])
     const [initsearch,setInitsearch] = useState('')
     const[search,setSearch]=useState("")
-   
+
     const option=(e)=>{
       setInitsearch(e.target.value)
-      // console.log("searching thing",search)
+      
     }
     useEffect(()=>{ 
         getdata()
-
     },[])
-    // console.log(data)
+    
     async function getdata(){
     var d=[]
   const querySnapshot = await getDocs(collection(db, "class"));
+  
   querySnapshot.forEach((doc) => {
     d=d.concat(doc.data());
   });
   setdata(d)
+
     }
     
    function handle(){
@@ -75,8 +77,8 @@ function Page(){
            </div>
            <div className="front_endmain">
            {
-            data.length!=0&&
-          data.filter((l)=>{
+            data.length !==0&&
+          data.filter((l) =>{
             if(l.name!==undefined){
               return (
            
@@ -85,7 +87,7 @@ function Page(){
             }
             
           }).map((l,index)=>{
-            // console.log("l",l)
+            
             return(
               
             <div key={index} className="front_end">
@@ -104,7 +106,6 @@ function Page(){
 
                 <div className="fbutton"> 
                    <Button style={{backgroundColor:'red',color:'white'}} onClick={()=>viewbutton(l)} >View</Button>
-                   {/* <Button style={{backgroundColor:'red',color:'white'}} onClick={()=>hdelete(l.id)}>delete</Button> */}
                 </div>  
 
             </div> )

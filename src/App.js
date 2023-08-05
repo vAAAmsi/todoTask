@@ -1,12 +1,8 @@
 import { Route,Routes } from 'react-router-dom';
-import Tasks from './addingtasks';
-import './App.css';
-import Page from './default';
-import './stylings.css'
-import db from "./firebase";
-import Data from './temp';
-import MaterialUIPickers from './td';
-import Completed from './completedtasks';
+import Tasks from './components/Adding/addingtasks.js';
+import Page from './components/Dashboard/dashboard.js';
+import Data from './components/viewcomponent/view.js';
+import Completed from './components/completedtasks/completedtasks.js';
 function App() {
   return (
     <div>

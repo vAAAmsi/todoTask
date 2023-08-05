@@ -1,0 +1,50 @@
+.completednavbar{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    background-color: red;
+    align-items: center;
+    margin-bottom: 20px;
+    z-index:1;
+    position: sticky;
+    top: 0px;
+
+}
+.completednavbarcenter{
+    height: 20px;
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+
+}
+.completedsearch{
+    display: flex;
+    justify-content: center;
+}
+.completedsearchbar{
+    width: 70%;
+}
+.completedfrontendmain{
+    margin:40px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+.completedfrontend{
+    border: 1px solid gray;
+    width: 300px;
+    border-radius: 20px;
+}
+.completedname,.completeddate,.completeddesc,.completedtime{
+    margin-bottom: 20px;
+    margin-left: 10px;
+    font-size: 25px;
+}
+.completedButton{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}

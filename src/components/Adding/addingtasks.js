@@ -1,6 +1,7 @@
 import { Button, TextField, Tooltip } from "@mui/material";
-import { useState,React } from "react";
-import db from './firebase'
+import { useState,React, useEffect } from "react";
+import './addingtasks.css'
+import db from '../../Firebse/firebase'
 import { collection, doc, setDoc,addDoc,docRef } from "firebase/firestore";
 import dayjs from 'dayjs';
 import Stack from '@mui/material/Stack';
@@ -10,10 +11,12 @@ import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';  
 
 function Tasks(){
-      
+      useEffect(() => {
+
+      },[])
     var[w,setW]=useState()
     var[x, setX] = useState(dayjs());
     var[y,setY]= useState(dayjs());
@@ -31,11 +34,7 @@ function Tasks(){
     }
     const date=(e)=>{
         const d=new Date(e.$d)
-        
         setY(e.$d)
-        // console.log(x)
-
-        // console.log(t)
     }
     const desc=(e)=>{
        setZ(e.target.value)
@@ -46,8 +45,6 @@ function Tasks(){
     const doct=await doc(collection(db, "class"))
     
     try{
-        
-        // console.log(doct.id,"iam id")
         await setDoc(doct,{
             name:w,
                 time:new Date(x).getHours()+`:${new Date(x).getMinutes()<10?'0':''}`+new Date(x).getMinutes(),
@@ -81,9 +78,7 @@ function Tasks(){
    
     return(
         <div> 
-           
-
-             <div className="addpage_nav">
+            <div className="addpage_nav">
             <Tooltip title='Go back to dashboard' >
             <div>< KeyboardBackspaceIcon style={{fontSize:'35px',cursor:'pointer',color:'white'}} onClick={()=>navigate('/')}/></div>
             </Tooltip>

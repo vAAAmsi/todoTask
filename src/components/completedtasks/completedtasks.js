@@ -3,11 +3,11 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useNavigate } from "react-router-dom";
 import { TextField,Button, Tooltip ,InputAdornment} from "@mui/material";
 import VerifiedIcon from '@mui/icons-material/Verified';
-
+import './completedtasks.css'
 import { collection, deleteDoc,doc, getDocs } from "firebase/firestore";
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import db from "./firebase";
+import db from "../../Firebse/firebase";
 import Swal from "sweetalert2";
 function Completed(){
    const navigate=useNavigate()
@@ -15,8 +15,6 @@ function Completed(){
    const [initsearch,setInitsearch] = useState('')
    const [search,setSearch]=useState('')
    
-    
-//    console.log("sertch",Serach)
    useEffect(()=>{ 
     getdata()
 
@@ -30,9 +28,7 @@ function Completed(){
   setdata(d)
     }
 const DeleteCo=async(i)=>{
-    //    console.log("id",i)
         await deleteDoc(doc(db,"completedtasks",i));
-        // navigate('/')
         getdata();
     
     await Swal.fire({
@@ -42,7 +38,6 @@ const DeleteCo=async(i)=>{
     })
 
 }
-    // console.log(data)
   
     return(
         <div>

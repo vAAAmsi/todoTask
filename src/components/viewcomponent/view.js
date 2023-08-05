@@ -1,9 +1,10 @@
 import { Navigate, useLocation,useNavigate } from "react-router-dom";
 import { useState } from "react";
+import './view.css'
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { Button, Tooltip } from "@mui/material";
-import db from "./firebase";
+import db from "../../Firebse/firebase";
 import { addDoc, collection, deleteDoc,doc, setDoc, updateDoc } from "firebase/firestore";
 import ArrowBackSharpIcon from '@mui/icons-material/ArrowBackSharp';
 import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
@@ -30,20 +31,10 @@ function Data(){
             }
            navigate('/')
           }catch(error){
-            //   await Swal.fire({
-            //     icon:"error",
-            //     title:"Something went wrong",
-            //   })
           }
     }
-    // const updatehandle=async(v)=>{
-    //      console.log("id",v)
-    //      await updateDoc(doc(db,"class",v))
-
-
-    // }
      const completeHandle=async(i,id)=>{
-        //  console.log(i,id)
+
         const doct=await doc(collection(db,"completedtasks"))
         
         i.id=doct.id;
